@@ -1,0 +1,36 @@
+﻿.cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    text-align: center;
+    position: relative;
+    pointer-events: auto;
+}
+
+    .cell.white {
+        background-color: #b3e5fc; /* Light Blue */
+    }
+
+    .cell.black {
+        background-color: #a5d6a7; /* Light Green */
+    }
+
+.disc {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.white-disc {
+    background-color: white;
+    border: 1.5px solid black;
+}
+
+.black-disc {
+    background-color: black;
+    border: 1.5px solid white;
+}

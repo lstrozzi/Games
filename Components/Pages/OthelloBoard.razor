@@ -1,0 +1,44 @@
+﻿@page "/othelloboard"
+@rendermode InteractiveServer
+@namespace Othello.Pages
+
+<h3>Othello</h3>
+
+<div>
+    <table>
+        @for (int row = 1; row <= 8; row++) {
+            <tr>
+                @for (int col = 1; col <= 8; col++) {
+                    string cellType = ((row + col) % 2) == 0 ? "white" : "black";
+
+                    <td class="cell @cellType" @onclick="(e) => OnCellClick(row, col)">
+                        <div class="disc @GetDiscClass(row, col)"></div>
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+
+@code {
+    private int[,] board = new int[10, 10];
+
+    protected override void OnInitialized() {
+        // Initialize the board with starting positions
+        board[4, 4] = 1;
+        board[4, 5] = -1;
+        board[5, 4] = -1;
+        board[5, 5] = 1;
+    }
+
+    private string GetDiscClass(int row, int col) {
+        return board[row, col] switch {
+            1  => "white-disc",
+            -1 => "black-disc",
+            _  => string.Empty
+        };
+    }
+
+    private void OnCellClick(int row, int col) {
+    }
+}
