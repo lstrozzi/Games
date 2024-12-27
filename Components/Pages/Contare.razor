@@ -1,0 +1,28 @@
+﻿@page "/contare"
+@rendermode InteractiveServer
+
+<PageTitle>Contare</PageTitle>
+
+<h1>Contare</h1>
+
+<div class="readonly-textarea">
+    <pre>@Text</pre>
+</div>
+
+<button class="btn btn-primary" @onclick="Count">Click me</button>
+
+@code {
+    private string Text = "";
+
+    private async Task Count()
+    {
+        await AddText("1");
+    }
+
+    private async Task AddText(string t)
+    {
+        Text += t + '\n';
+        StateHasChanged();
+        await Task.Delay(1000);
+    }
+}
