@@ -14,15 +14,28 @@
 @code {
     private string Text = "";
 
-    private async Task Count()
-    {
-        await AddText("1");
+    private async Task Count() {
+        int idx;
+
+        for (idx = 1; idx <= 10; idx += 1) {
+            string pari_o_dispari;
+            if (idx % 2 == 0) {
+                pari_o_dispari = "pari";
+            } else {
+                pari_o_dispari = "dispari";
+            }
+            await AddText(idx + ": " + pari_o_dispari);
+        }
+       
+        await AddText("");
+        await Task.Delay(1000);
+        await AddText("Finito!");
     }
 
-    private async Task AddText(string t)
+    private async Task AddText(object t)
     {
-        Text += t + '\n';
+        Text += t.ToString() + '\n';
         StateHasChanged();
-        await Task.Delay(1000);
+        await Task.Delay(500);
     }
 }
