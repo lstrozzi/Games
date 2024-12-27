@@ -32,8 +32,7 @@
         await AddText("Finito!");
     }
 
-    private async Task AddText(object t)
-    {
+    private async Task AddText(object t) {
         Text += t.ToString() + '\n';
         StateHasChanged();
         await Task.Delay(500);
